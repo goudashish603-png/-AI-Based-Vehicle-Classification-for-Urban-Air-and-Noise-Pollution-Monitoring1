@@ -269,6 +269,17 @@ class EndToEndPipeline:
             if not ret or (max_frames is not None and frame_idx >= max_frames):
                 break
 
+            # Periodic RAM garbage collection to prevent cloud 502 OOM crash
+            if frame_idx % 15 == 0:
+                import gc
+                gc.collect()
+
+            # Downscale high-res video frames to 960px max dim to conserve RAM
+            fh, fw = frame.shape[:2]
+            if max(fh, fw) > 960:
+                sc = 960.0 / float(max(fh, fw))
+                frame = cv2.resize(frame, (int(fw * sc), int(fh * sc)), interpolation=cv2.INTER_AREA)
+
             ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             # Frame Skipping Optimization: run detection every N frames

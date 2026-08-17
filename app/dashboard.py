@@ -214,8 +214,10 @@ if input_mode == "Upload Video" and uploaded_file is not None:
     try:
         uploaded_video_path = output_dir / f"uploaded_{uploaded_file.name}"
         if not uploaded_video_path.exists() or uploaded_video_path.stat().st_size != uploaded_file.size:
+            uploaded_file.seek(0)
             with open(uploaded_video_path, "wb") as f:
-                f.write(uploaded_file.getbuffer())
+                while chunk := uploaded_file.read(1024 * 1024):
+                    f.write(chunk)
     except Exception as e:
         st.sidebar.error(f"⚠️ Video upload stream warning: {e}")
 
