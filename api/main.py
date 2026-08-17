@@ -60,8 +60,13 @@ def get_classifier() -> VehicleMakeModelClassifier:
             classifier = None
     return classifier
 
+from fastapi.responses import FileResponse
+
 @app.get("/", tags=["General"])
 def root():
+    index_path = Path("index.html")
+    if index_path.exists():
+        return FileResponse(index_path)
     return {
         "status": "online",
         "service": "AI-Based Vehicle Classification & Environmental Telemetry API",
