@@ -39,12 +39,33 @@ def get_cached_pipeline(conf_threshold: float, process_every_n_frames: int) -> E
         process_every_n_frames=process_every_n_frames
     )
 
-# Professional Smart City UI CSS Styling
+# Professional Smart City UI CSS Styling (Matching Glassmorphic Web App Design)
 st.markdown("""
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+    :root {
+        --bg-dark: #090D16;
+        --card-bg: rgba(22, 30, 46, 0.75);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --accent-cyan: #38BDF8;
+        --accent-indigo: #6366F1;
+        --accent-emerald: #10B981;
+        --accent-amber: #F59E0B;
+        --accent-rose: #F43F5E;
+    }
     .stApp {
-        background-color: #0B0F19;
-        color: #F3F4F6;
+        background-color: #090D16;
+        background-image: 
+            radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+            radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.08) 0%, transparent 45%);
+        color: #F8FAFC;
+        font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .main-title {
+        font-family: 'Outfit', sans-serif !important;
     }
     .main-title {
         font-size: 2.2rem;
@@ -56,29 +77,38 @@ st.markdown("""
     }
     .sub-title {
         font-size: 1.05rem;
-        color: #9CA3AF;
+        color: #94A3B8;
         margin-bottom: 1.2rem;
     }
     .disclaimer-card {
-        background: rgba(30, 41, 59, 0.7);
+        background: rgba(30, 41, 59, 0.65);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(245, 158, 11, 0.3);
         border-left: 4px solid #F59E0B;
         padding: 0.9rem 1.2rem;
-        border-radius: 6px;
+        border-radius: 12px;
         margin-bottom: 1.5rem;
         font-size: 0.88rem;
-        line-height: 1.4;
+        line-height: 1.5;
         color: #E2E8F0;
     }
     .kpi-card {
-        background: #1E293B;
-        border: 1px solid #334155;
-        border-radius: 8px;
-        padding: 0.9rem;
+        background: rgba(22, 30, 46, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 1rem;
         text-align: center;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .kpi-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(56, 189, 248, 0.35);
     }
     .kpi-num {
-        font-size: 1.8rem;
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.85rem;
         font-weight: 700;
         margin: 0.2rem 0;
     }
@@ -86,12 +116,21 @@ st.markdown("""
         font-size: 0.8rem;
         color: #94A3B8;
     }
-    .badge-petrol { color: #3B82F6; }
-    .badge-diesel { color: #4B5563; }
+    .pulse-dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        background-color: #10B981;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 8px #10B981;
+    }
+    .badge-petrol { color: #38BDF8; }
+    .badge-diesel { color: #94A3B8; }
     .badge-ev { color: #10B981; }
-    .badge-cng { color: #F97316; }
-    .badge-hybrid { color: #8B5CF6; }
-    .badge-unknown { color: #9CA3AF; }
+    .badge-cng { color: #F59E0B; }
+    .badge-hybrid { color: #6366F1; }
+    .badge-unknown { color: #F43F5E; }
 </style>
 """, unsafe_allow_html=True)
 
