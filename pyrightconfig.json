@@ -1,0 +1,28 @@
+{
+  "include": [
+    "src",
+    "app",
+    "scripts",
+    "tests",
+    "run.py"
+  ],
+  "exclude": [
+    "**/.venv",
+    "**/.pytest_cache",
+    "**/__pycache__",
+    "outputs",
+    "data",
+    "docs"
+  ],
+  "ignore": [
+    "**/.venv"
+  ],
+  "typeCheckingMode": "off",
+  "reportMissingImports": false,
+  "reportMissingTypeStubs": false,
+  "executionEnvironments": [
+    {
+      "root": "."
+    }
+  ]
+}

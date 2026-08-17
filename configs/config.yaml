@@ -1,0 +1,52 @@
+system:
+  name: "AI-Based Vehicle Classification for Urban Air and Noise Pollution Monitoring"
+  version: "1.0.0"
+  device: "auto"  # options: auto, cuda, cpu, mps
+  log_level: "INFO"
+
+performance:
+  process_every_n_frames: 2       # Skip detection on alternate frames (2x speedup)
+  detection_image_size: 416        # YOLO input resolution (320, 416, 640)
+  classification_image_size: 128   # PyTorch crop classification input resolution
+  confidence_threshold: 0.40       # Detection confidence filter
+  enable_batch_classification: true
+  max_classification_batch_size: 16
+
+detection:
+  model_name: "yolov8n.pt"  # Ultralytics YOLO model or PyTorch Hub fallback
+  conf_threshold: 0.45
+  iou_threshold: 0.45
+  target_classes:
+    - 2 # car
+    - 3 # motorcycle
+    - 5 # bus
+    - 7 # truck
+  class_names:
+    2: "car"
+    3: "motorcycle"
+    5: "bus"
+    7: "truck"
+
+tracking:
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+  pixel_to_meter_scale: 0.05  # Approximate meters per pixel for speed estimation
+
+classification:
+  backbone: "resnet50"
+  num_classes: 6
+  image_size: 224
+  fuel_types:
+    - "Petrol"
+    - "Diesel"
+    - "Electric Vehicle (EV)"
+    - "CNG/LPG"
+    - "Hybrid"
+    - "Unknown"
+
+environmental:
+  openaq_base_url: "https://api.openaq.org/v2"
+  default_city: "Delhi"
+  default_country: "IN"
+  use_mock_fallback: true

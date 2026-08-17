@@ -1,0 +1,14 @@
+.venv
+__pycache__
+.pytest_cache
+data/
+outputs/
+*.pt
+*.onnx
+*.engine
+tests/
+scripts/
+docs/
+api/
+requirements.txt
+requirements-vercel.txt

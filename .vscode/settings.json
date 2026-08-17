@@ -1,0 +1,51 @@
+{
+  "python.analysis.diagnosticMode": "off",
+  "python.analysis.typeCheckingMode": "off",
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "explorer.decorations.errors": false,
+  "explorer.decorations.colors": false,
+  "git.decorations.enabled": false,
+  "scm.countBadge": "off",
+  "problems.decorations.enabled": false,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedImport": "none",
+    "reportUnusedVariable": "none",
+    "reportMissingImports": "none",
+    "reportUndefinedVariable": "none",
+    "reportGeneralTypeIssues": "none"
+  },
+  "python.analysis.exclude": [
+    "**/.venv",
+    "**/.pytest_cache",
+    "**/__pycache__",
+    "**/outputs",
+    "**/data"
+  ],
+  "python.analysis.ignore": [
+    "*"
+  ],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/src",
+    "${workspaceFolder}"
+  ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src",
+    "${workspaceFolder}"
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true
+  },
+  "search.exclude": {
+    "**/.venv": true,
+    "**/.pytest_cache": true,
+    "**/__pycache__": true
+  }
+}

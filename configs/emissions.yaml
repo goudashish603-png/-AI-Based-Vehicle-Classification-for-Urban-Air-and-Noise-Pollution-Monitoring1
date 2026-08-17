@@ -1,0 +1,121 @@
+# Emission Factors per Vehicle & Fuel Class (g/km per vehicle)
+# Based on COPERT V / EEA Air Pollutant Emission Inventory Guidebook
+emission_factors:
+  car:
+    Petrol:
+      PM2_5: 0.003
+      PM10: 0.005
+      NOx: 0.250
+      CO: 1.500
+      CO2: 140.0
+    Diesel:
+      PM2_5: 0.035
+      PM10: 0.045
+      NOx: 0.650
+      CO: 0.400
+      CO2: 130.0
+    Electric Vehicle (EV):
+      PM2_5: 0.001  # Tire/Brake wear only
+      PM10: 0.002
+      NOx: 0.000
+      CO: 0.000
+      CO2: 0.000
+    CNG/LPG:
+      PM2_5: 0.002
+      PM10: 0.003
+      NOx: 0.180
+      CO: 0.800
+      CO2: 110.0
+    Hybrid:
+      PM2_5: 0.002
+      PM10: 0.003
+      NOx: 0.120
+      CO: 0.700
+      CO2: 90.0
+    Unknown:
+      PM2_5: 0.015
+      PM10: 0.020
+      NOx: 0.400
+      CO: 1.000
+      CO2: 125.0
+
+  bus:
+    Diesel:
+      PM2_5: 0.150
+      PM10: 0.190
+      NOx: 4.500
+      CO: 2.100
+      CO2: 750.0
+    CNG/LPG:
+      PM2_5: 0.010
+      PM10: 0.015
+      NOx: 1.200
+      CO: 1.500
+      CO2: 650.0
+    Electric Vehicle (EV):
+      PM2_5: 0.004
+      PM10: 0.008
+      NOx: 0.000
+      CO: 0.000
+      CO2: 0.000
+    Unknown:
+      PM2_5: 0.120
+      PM10: 0.150
+      NOx: 3.800
+      CO: 2.000
+      CO2: 700.0
+
+  truck:
+    Diesel:
+      PM2_5: 0.180
+      PM10: 0.220
+      NOx: 5.200
+      CO: 2.500
+      CO2: 850.0
+    Petrol:
+      PM2_5: 0.020
+      PM10: 0.028
+      NOx: 1.800
+      CO: 3.200
+      CO2: 780.0
+    Electric Vehicle (EV):
+      PM2_5: 0.005
+      PM10: 0.010
+      NOx: 0.000
+      CO: 0.000
+      CO2: 0.000
+    Unknown:
+      PM2_5: 0.150
+      PM10: 0.190
+      NOx: 4.800
+      CO: 2.400
+      CO2: 820.0
+
+  motorcycle:
+    Petrol:
+      PM2_5: 0.012
+      PM10: 0.015
+      NOx: 0.150
+      CO: 2.200
+      CO2: 65.0
+    Electric Vehicle (EV):
+      PM2_5: 0.0005
+      PM10: 0.001
+      NOx: 0.000
+      CO: 0.000
+      CO2: 0.000
+    Unknown:
+      PM2_5: 0.010
+      PM10: 0.012
+      NOx: 0.140
+      CO: 2.000
+      CO2: 60.0
+
+noise_emission_factors:
+  # Base Sound Power Level (dBA at 10 meters) at 50 km/h reference
+  car: 72.0
+  motorcycle: 78.0
+  bus: 84.0
+  truck: 86.0
+
+speed_correction_factor: 0.2 # dBA increase per 10 km/h over reference 50 km/h
