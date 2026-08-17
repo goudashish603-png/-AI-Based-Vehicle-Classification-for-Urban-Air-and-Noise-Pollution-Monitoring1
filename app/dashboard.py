@@ -265,10 +265,19 @@ if run_button:
                 else:
                     prog_bar.progress(0.5, text=f"⚡ Processing Video Frame {curr}...")
             try:
+                import gc
+                gc.collect()
+                save_vid_flag = not is_render_cloud
                 pipeline = get_cached_pipeline(conf_threshold=conf_threshold, process_every_n_frames=frame_skipping)
-                summary = pipeline.process_video(uploaded_video_path, max_frames=max_frames_val, progress_callback=update_progress)
+                summary = pipeline.process_video(
+                    uploaded_video_path,
+                    max_frames=max_frames_val,
+                    save_video=save_vid_flag,
+                    progress_callback=update_progress
+                )
                 prog_bar.progress(1.0, text="✅ End-to-End AI Video Analysis Complete!")
                 st.success("✅ End-to-End AI Video Analysis Complete!")
+                gc.collect()
             except Exception as e:
                 st.error(f"❌ Error processing video: {str(e)}")
     else:
@@ -280,14 +289,23 @@ if run_button:
             else:
                 prog_bar.progress(0.5, text=f"⚡ Processing Sample Video Frame {curr}...")
         try:
+            import gc
+            gc.collect()
             sample_vid = Path("data/raw/videos/sample_traffic.mp4")
             if not sample_vid.exists():
                 from scripts.prepare_sample_data import main as prep_sample
                 prep_sample()
+            save_vid_flag = not is_render_cloud
             pipeline = get_cached_pipeline(conf_threshold=conf_threshold, process_every_n_frames=frame_skipping)
-            summary = pipeline.process_video(sample_vid, max_frames=max_frames_val, progress_callback=update_progress)
+            summary = pipeline.process_video(
+                sample_vid,
+                max_frames=max_frames_val,
+                save_video=save_vid_flag,
+                progress_callback=update_progress
+            )
             prog_bar.progress(1.0, text="✅ Sample Video Analysis Complete!")
             st.success("✅ Sample Video Analysis Complete!")
+            gc.collect()
         except Exception as e:
             st.error(f"❌ Error processing sample video: {str(e)}")
 

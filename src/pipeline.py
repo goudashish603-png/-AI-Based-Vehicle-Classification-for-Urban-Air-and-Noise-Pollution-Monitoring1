@@ -274,10 +274,10 @@ class EndToEndPipeline:
                 import gc
                 gc.collect()
 
-            # Downscale high-res video frames to 960px max dim to conserve RAM
+            # Downscale high-res video frames to 640px max dim to conserve RAM on Cloud
             fh, fw = frame.shape[:2]
-            if max(fh, fw) > 960:
-                sc = 960.0 / float(max(fh, fw))
+            if max(fh, fw) > 640:
+                sc = 640.0 / float(max(fh, fw))
                 frame = cv2.resize(frame, (int(fw * sc), int(fh * sc)), interpolation=cv2.INTER_AREA)
 
             ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
