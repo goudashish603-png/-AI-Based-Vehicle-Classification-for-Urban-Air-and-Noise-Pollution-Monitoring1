@@ -156,7 +156,7 @@ st.sidebar.markdown("---")
 st.sidebar.subheader("⚙️ Performance Tuning")
 default_skip = 3 if is_render_cloud else 2
 frame_skipping: int = int(st.sidebar.select_slider("Frame Skipping (Process Every N Frames):", options=[1, 2, 3, 4], value=default_skip))
-conf_threshold: float = float(st.sidebar.slider("YOLO Detection Confidence:", 0.10, 0.95, 0.30, 0.05))
+conf_threshold: float = float(st.sidebar.slider("YOLO Detection Confidence:", 0.05, 0.95, 0.20, 0.05))
 
 if is_render_cloud:
     max_frames_opt = st.sidebar.selectbox(

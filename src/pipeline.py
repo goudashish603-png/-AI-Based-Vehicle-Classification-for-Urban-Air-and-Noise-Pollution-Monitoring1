@@ -99,7 +99,7 @@ class EndToEndPipeline:
         # Preprocessing
         # Detection
         t_det_start = time.time()
-        detections = self.detector.detect(frame)
+        detections = self.detector.detect(frame, conf_thresh=self.conf_threshold)
         self.profiler.detection_ms += (time.time() - t_det_start) * 1000.0
 
         # Tracking
@@ -274,7 +274,7 @@ class EndToEndPipeline:
             # Frame Skipping Optimization: run detection every N frames
             if frame_idx % self.process_every_n_frames == 0:
                 t_det = time.time()
-                detections = self.detector.detect(frame)
+                detections = self.detector.detect(frame, conf_thresh=self.conf_threshold)
                 self.profiler.detection_ms += (time.time() - t_det) * 1000.0
                 last_detections = detections
             else:
